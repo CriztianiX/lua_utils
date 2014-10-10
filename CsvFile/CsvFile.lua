@@ -8,6 +8,9 @@ do
       end
       return error(msg)
     end,
+    close = function(self)
+      return self.file:close()
+    end,
     escapeCsv = function(self, s, sep)
       if sep == nil then
         sep = ","
@@ -31,7 +34,7 @@ do
   _base_0.__index = _base_0
   local _class_0 = setmetatable({
     __init = function(self, filepath, mode)
-      self.file = io.open(filepath, mode)
+      self.file = assert(io.open(filepath, mode))
     end,
     __base = _base_0,
     __name = "CsvFile"

@@ -3,12 +3,16 @@ class CsvFile
   @separetor: ","
 
   new: (filepath, mode) =>
-    @file = io.open(filepath, mode)
+    @file = assert(io.open(filepath, mode))
 
   write: (data) =>
     res, msg = @file\write(@tocsv(data, @separator),"\n")
     if res then return
     error(msg)
+
+  close: () =>
+    print "ooooo"
+    @file\close!
 
   escapeCsv: (s, sep = ",") =>
      if string.find(s, '["' .. sep .. ']') then
