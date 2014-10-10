@@ -11,8 +11,7 @@ class CsvFile
     error(msg)
 
   close: () =>
-    print "ooooo"
-    @file\close!
+    return @file\close!
 
   escapeCsv: (s, sep = ",") =>
      if string.find(s, '["' .. sep .. ']') then
