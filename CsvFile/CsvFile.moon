@@ -9,6 +9,11 @@ class CsvFile
     res, msg = @file\write(@tocsv(data, @separator),"\n")
     if res then return
     error(msg)
+-- This is only a wrapper for io.write
+  raw_write: (data) =>
+    res, msg = @file\write(data)
+    if res then return
+    error(msg)
 
   close: () =>
     return @file\close!

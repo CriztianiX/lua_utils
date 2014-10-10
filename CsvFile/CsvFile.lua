@@ -8,6 +8,13 @@ do
       end
       return error(msg)
     end,
+    raw_write = function(self, data)
+      local res, msg = self.file:write(data)
+      if res then
+        return 
+      end
+      return error(msg)
+    end,
     close = function(self)
       return self.file:close()
     end,
