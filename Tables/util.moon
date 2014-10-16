@@ -4,4 +4,7 @@ in_table = (e, table)->
 
     return false
 
-{ :in_table }
+table_key_exists = (key, table) ->
+  return table[key] ~= nil
+
+{ :in_table, :table_key_exists }
